@@ -1,0 +1,1174 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.wrap{
+    float: none;
+    margin: 0;
+    color: dimgray;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    background-color: WhiteSmoke;
+  }
+  
+  .header{
+    z-index: 2;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    position: fixed;
+    background-color: #EDF7FF;
+  }
+  
+  .logo{
+    height: 46px; 
+    margin-left: 1.5%; 
+    margin-top: 2px;
+  }
+
+  #toggle {
+    float: right;
+    margin-right: 15px;
+    width: 28px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+  }
+  
+  #toggle div {
+    width: 100%;
+    height: 2px;
+    background: dimgray;
+    margin-top: 8px;
+  }
+
+  #menu{
+    z-index: 2;
+    top: 50px;
+    left: 70%;
+    width: 30%;
+    height: 90%;
+    background-color: #EDF7FF;
+    border-radius: 0px 0px 0px 8px;
+    position: fixed;
+    overflow: auto;
+  }
+
+  #menu li{
+    height: 50px;
+  }
+
+  #menu li img{
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin: 10px;
+  }
+
+  #menu li a{
+    float: left;
+    text-decoration: none;
+    color: dimgray;
+    font-size: 20px;
+    line-height: 50px;
+    display: block;
+    width: 100%;
+  }
+
+  #menu li a:hover{
+    background-color: rgb(215, 237, 253);
+  }
+
+  ::-webkit-scrollbar{
+    width: 7px;
+    height: 16px;
+    background-color: aliceblue;
+  }
+
+  ::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background-color: aliceblue;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    border-radius:10px;
+    background-color: dimgray;
+  }
+  
+  .clear{
+    clear: both;
+  }
+
+  .search{
+    float: none;
+    margin: auto;
+    width: 98%;
+    height: 350px;
+    background-image: url("../img/bg8.png");
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+
+  .search h1{
+    text-align: center;
+    font-size: 50px;
+    padding-top: 110px;
+  }
+
+  .search p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .inputArea{
+    width: 340px;
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+  }
+
+  .searchTerm{
+    outline: none;
+    width: 100%;
+    height: 40px;
+    background: none;  
+    border: 1px solid dimgray;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    outline: none;
+    font-size: 24px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+  }
+  
+  .searchBtn {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 0px;
+    outline: none;
+  }
+
+  .searchBtn img{
+    width: 40px;
+    height: 40px;
+  } 
+
+  .content{
+    width: 98%;
+    margin: auto;
+    background-color:	#fff;
+  }
+  
+  .inputItem{
+    font-size: 36px;
+    color: rgb(62, 133, 156);
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  .line{
+    width: 900px;
+    border: 1px solid rgb(62, 133, 156);
+    border-style: dashed;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+  }  
+
+  .list{
+    float: left;
+    width: 100%;
+    background-color: #FFF;
+    padding-bottom: 50px;
+  }
+  
+  .info{
+    float: left;
+    max-width: 450px;
+    background-color: #fff;
+    margin: 50px 30px 30px 85px;
+    padding-bottom: 20px;
+    box-shadow: 0 1px 3px 0 rgba(28, 128, 185, 0.404);
+    border-radius: 2px;
+    font-size: 16px;
+    font-family: "Microsoft JhengHei UI" ,sans-serif;
+  }
+
+  .info h3{
+    font-size: 24px;
+    margin-left: 10px;
+    padding-top: 18px;
+    color: rgb(15, 87, 129);
+  }
+
+  .address{
+    font-size: 20px;
+    margin-top: 25px;
+    margin-left: 45px;
+    margin-right: 15px;
+  }
+
+  .tel{
+    font-size: 20px;
+    margin-top: 25px;
+  }
+
+  .recommend{
+    text-decoration: none;
+    float: right;
+    margin-top: 5px;
+    margin-right: 15px;
+    line-height: 28px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    color: rgb(138, 138, 138);
+    font-size: 18px;
+    text-align: center;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .bestIcon {
+    height: 30px;
+    margin-right: 5px;
+  }
+
+  .addIcon {
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .telIcon {
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .commentIcon{
+    height: 25px;
+    float: left;
+    margin-right: 3px;
+  }
+
+  .showAllComments{
+    float: right;
+    margin-top: 15px;
+    margin-right: 15px;
+    line-height: 28px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    color: rgb(138, 138, 138);
+    font-size: 18px;
+    text-align: center;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .btn0{
+    float: right;
+    width: 325px;
+  }
+
+  .btn0_map{
+    float: right;
+    width: 325px;
+  }
+
+  .btn{
+    z-index: 1;
+    float: left;
+    width: 325px;
+    position: relative;
+    left: 50%;
+    margin-left: -162.5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .btn_map{
+    z-index: 1;
+    float: left;
+    width: 325px;
+    position: relative;
+    left: 50%;
+    margin-left: -162.5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .btn button{
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 18px;
+    width: 105px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .btn_map button{
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 18px;
+    width: 105px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .postArea{
+    float: left;
+    width: 420px;
+  }
+
+  .postArea_map{
+    float: left;
+    width: 420px;
+  }
+
+  .postInput{
+    min-width: 100%;
+    height: 150px;
+    display: table;
+  }
+
+  .postInput_map{
+    min-width: 100%;
+    height: 150px;
+    display: table;
+  }
+
+  .postArea img{
+    width: 50px;
+    height: 50px;
+    float: left;
+    display:table-cell;
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+
+  .postArea_map img{
+    width: 50px;
+    height: 50px;
+    float: left;
+    display:table-cell;
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+
+  .eatTimeTerm{
+    width: 280px;
+    height: 30px;
+    float: left;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: aliceblue;  
+    border: 0.5px solid rgb(208, 232, 253);
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+    margin-left: 40px;
+    margin-bottom: 20px;
+  }
+
+  .postTerm{
+    width: 280px;
+    min-height: 130px;
+    float: left;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: aliceblue;  
+    border: 0.5px solid rgb(208, 232, 253);
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+    margin-left: 40px;
+  }
+
+  .btn2 button{
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 18px;
+    width: 60px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 5px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .btn2_map button{
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 18px;
+    width: 60px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 5px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .btn2{
+    width: 130px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+  }
+
+  .btn2_map{
+    width: 130px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+  }
+
+  .commentArea{
+    float: left;
+    width: 420px;
+  }
+
+  .commentArea_map{
+    float: left;
+    width: 420px;
+  }
+
+  .commentInput{
+    width: 100%;
+    height: 70px;
+    display: table;
+  }
+
+  .commentInput_map{
+    width: 100%;
+    height: 70px;
+    display: table;
+  }
+
+  .commentArea img{
+    width: 50px;
+    height: 50px;
+    float: left;
+    display:table-cell;
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+
+  .commentArea_map img{
+    width: 50px;
+    height: 50px;
+    float: left;
+    display:table-cell;
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+
+  .commentTerm{
+    width: 280px;
+    min-height: 70px;
+    float: left;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: aliceblue;  
+    border: 0.5px solid rgb(208, 232, 253);
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+    margin-left: 40px;
+  }
+
+  .btn3{
+    width: 300px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .btn3_map{
+    width: 300px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .btn3 button{
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 18px;
+    width: 100px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 5px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .btn3_map button{
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 18px;
+    width: 100px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 5px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .allComments{
+    width: 100%;
+    float: left;
+  }
+
+  .allComments_map{
+    width: 100%;
+    float: left;
+  }
+
+  .comments{
+    height: 80px;
+    margin-bottom: 30px;
+  }
+
+  .comments_map{
+    height: 80px;
+    margin-bottom: 30px;
+  }
+
+  .comments img{
+    width: 50px;
+    height: 50px;
+    float: left;
+    display:table-cell;
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+
+  .comments_map img{
+    width: 50px;
+    height: 50px;
+    float: left;
+    display:table-cell;
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+
+  .commentContent{
+    width: 280px;
+    min-height: 70px;
+    float: left;
+    background-color: aliceblue;  
+    border: 0.5px solid rgb(208, 232, 253);
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+    margin-left: 20px;
+  }
+
+  .commentContent_map{
+    width: 280px;
+    min-height: 70px;
+    float: left;
+    background-color: aliceblue;  
+    border: 0.5px solid rgb(208, 232, 253);
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+    margin-left: 20px;
+  }
+
+  .commentContent p{
+    padding: 10px;
+    word-wrap : break-word;
+  }
+
+  .commentContent_map p{
+    padding: 10px;
+    word-wrap : break-word;
+  }
+
+  .btnOption{
+    width: 300px;
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+
+  .btnOption button{
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 16px;
+    width: 85px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 8px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .btnOption_map{
+    width: 300px;
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+
+  .btnOption_map button{
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 16px;
+    width: 85px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 8px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .footer{
+    width: 98%;
+    margin: auto;
+    background-color: #EDF7FF;
+    padding-bottom: 30px;
+  }
+
+  .left{
+    width: 330px;
+    margin-left: 50px;
+    padding-top: 30px;
+  }
+
+  .logo_footer{
+    width: 200px;
+  }
+
+  .left h3{
+    font-size: 30px;
+    margin-top: 20px;
+  }
+
+  .left p{
+    width: 330px;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  .right{
+    width: 330px;
+    margin-left: 500px;
+    margin-top: -120px;
+  }
+
+  ::placeholder {
+    color: rgb(165, 165, 165);
+  }
+
+  .questionTerm{
+    outline: none;
+    margin-left: 50px;
+    margin-top: 30px;
+    width: 330px;
+    height: 80px;
+    background: transparent;  
+    border: 0.1px solid dimgray;
+    font-size: 16px;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+  }
+  
+  .emailArea{
+    width: 330px;
+    margin-left: 50px;
+    margin-top: 20px;
+    display: flex;
+  }
+
+  .emailTerm{
+    outline: none;
+    width: 100%;
+    height: 40px;
+    background: none;  
+    border: 0.1px solid dimgray;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    font-size: 16px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+  }
+  
+  .submitBtn {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 0px;
+    outline: none;
+  }
+
+  .contact{
+    width: 30px;
+    height: 30px;
+  }
+
+  .listBtn {
+    z-index: 5;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: 33%;
+    border: 0px;
+    opacity: 0.6;
+    background: dimgray;
+    outline: none;
+  }
+
+  .listBtn img{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: cover;
+    background-position: bottom;
+    padding-top: 0.3rem;
+  }
+
+  .mapBtn {
+    z-index: 5;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: 33%;
+    border: 0px;
+    opacity: 0.6;
+    background: dimgray;
+    outline: none;
+  }
+
+  .mapBtn img{
+    width: 1.8rem;
+    height: 1.8rem;
+    background-size: cover;
+    background-position: inherit;
+  }
+
+  .toTop {
+    z-index: 5;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 33%;
+    opacity: 0.6;
+    background: dimgray;
+    cursor: pointer;
+    position: fixed;
+    right: 1rem;
+    bottom: 4rem;
+    display: none;
+  }
+
+  .toTop::before, .toTop::after {
+    width: 18px;
+    height: 5px;
+    border-radius: 3px;
+    background: aliceblue;
+    position: absolute;
+    content: "";
+  }
+
+  .toTop::before {
+    transform: rotate(-45deg) translate(0, -50%);
+    left: 0.5rem;
+  }
+
+  .toTop::after {
+    transform: rotate(45deg) translate(0, -50%);
+    right: 0.5rem;
+  }
+
+  .toTop:focus {
+    outline: none;
+  }
+
+  .mapContent{
+    position: relative;
+    float: left;
+    width: 98%;
+    margin-left: 1%;
+    background-color:	#fff;
+  }
+
+  .map{
+    float: left;
+    width: 90%;
+    height: 500px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 5%;
+  }
+
+  .info_map{
+    width: 250px;
+    font-family: "Microsoft JhengHei UI" ,sans-serif;
+  }
+
+  .info_map ul{
+    margin: 8px;
+  }
+
+  .info_map li{
+    font-size: 18px;
+  }
+
+  .info_map button{
+    display: block;
+    margin: auto;
+    margin-bottom: 8px;
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 18px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .info_detail{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left:-225px;
+    margin-top:-147px;
+    z-index: 1;
+    float: left;
+    max-width: 450px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(28, 128, 185, 0.404);
+    border-radius: 2px;
+    font-size: 16px;
+  }
+
+  .info_detail h3{
+    font-size: 24px;
+    margin-left: 10px;
+    padding-top: 18px;
+    color: rgb(15, 87, 129);
+  }
+
+  #close{
+    float: right;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    margin-top: 18px;
+    margin-right: 18px;
+  }
+
+  #close img{
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width:1100px){
+    #menu{
+      left: 62%;
+      min-width: 38%;
+    }
+
+    .search{
+      width: 100%;
+    }
+
+    .content{
+      width: 100%;
+    }
+
+    .mapContent{
+      width: 99%;
+    }
+
+    .line{
+      width: 93%;
+    }
+
+    .list{
+      width: 100%;
+    }
+
+    .info{
+      width: 90%;
+      margin-left: 5%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .map{
+      width: 90%;
+      margin-left: 5%;
+    }
+    
+    .info_detail{
+      width: 100%;
+    }
+
+    .footer{
+      width: 100%;
+    }
+
+    .left{
+      margin: auto;
+      margin-left: 50px;
+    }
+
+    .right{
+      margin: auto;
+      margin-left: -3px;
+    }
+
+  }
+
+  @media (max-width:480px){
+    #menu{
+      left: 40%;
+      min-width: 60%;
+    }
+
+    .map{
+      height: 280px;
+    }
+
+    .postArea{
+      width: 90%;
+    }
+
+    .postArea img{
+      width: 18%;
+      height: auto;
+      margin-left: 5%;
+    }
+
+    .eatTimeTerm{
+      width: 70%;
+      margin-left: 5%;
+    }
+  
+    .postTerm{
+      width: 70%;
+      margin-left: 5%;
+    }
+  
+    .btn2{
+      margin-left: 10%;
+    }
+
+    .commentArea{
+      width: 90%;
+    }
+
+    .commentArea img{
+      width: 18%;
+      height: auto;
+      margin-left: 5%;
+    }
+
+    .commentTerm{
+      width: 70%;
+      margin-left: 5%;
+    }
+    
+    .btn3{
+      margin-left: 8%;
+    }
+
+    .btnOption{
+      margin-left: 8%;
+    }
+
+    .allComments{
+      width: 90%;
+    }
+  
+    .comments img{
+      width: 18%;
+      height: auto;
+      margin-left: 5%;
+    }
+  
+    .commentContent{
+      width: 70%;
+      margin-left: 5%;
+    }
+
+    .info_detail{
+      width: 90%;
+      margin-left: 5%;
+      left: unset;
+    }
+
+    .postArea_map{
+        width: 90%;
+    }
+  
+    .postArea_map img{
+      width: 18%;
+      height: auto;
+      margin-left: 5%;
+    }
+
+    .btn2_map{
+      margin-left: 10%;
+    }
+
+    .commentArea_map{
+      width: 90%;
+    }
+  
+    .commentArea_map img{
+      width: 18%;
+      height: auto;
+      margin-left: 5%;
+    }
+
+    .btn3_map{
+      margin-left: 8%;
+    }
+
+    .btnOption_map{
+      margin-left: 8%;
+    }
+    
+    .allComments_map{
+      width: 90%;
+    }
+    
+    .comments_map img{
+      width: 18%;
+      height: auto;
+      margin-left: 5%;
+    }
+      
+    .commentContent_map{
+      width: 70%;
+      margin-left: 5%;
+    }
+
+    .btn_map{
+      width: 305px;
+      margin-left: -152.5px;
+    }
+    
+    .btn_map button{
+      font-size: 18px;
+      width: 98px;
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+
+    .left{
+      width: 85%;
+    }
+  
+    .left p{
+      width: 85%;
+    }
+  
+    .right{
+      width: 85%;
+    }
+  
+    .questionTerm{
+      width: 85%;
+    }
+    
+    .emailArea{
+      width: 85%;
+    }
+
+  }

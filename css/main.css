@@ -1,0 +1,372 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  height:100%;
+}
+
+.wrap{
+    float: none;
+    margin: auto;
+    color: dimgray;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    background-image: url("../img/login_bg.png");
+    background-repeat:repeat;
+    background-size:cover;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .header{
+    margin: 0;
+    background-color: #EDF7FF;
+    height: 50px;
+  }
+
+  .logo{
+    height: 46px; 
+    margin-left: 1.5%; 
+    margin-top: 2px;
+  }
+
+  ::-webkit-scrollbar{
+    width: 7px;
+    height: 16px;
+    background-color: aliceblue;
+  }
+
+  ::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background-color: aliceblue;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    border-radius:10px;
+    background-color: dimgray;
+  }
+  
+  .clear{
+    clear: both;
+  }
+
+  .content{
+    float: none;
+    margin: 0;
+    background-color: rgba(236, 236, 236, 0.4);
+  }
+
+  .login-content{
+    height: calc(100vh - 50px);
+  }
+
+  .bigLogo{
+    display: block;
+    margin: auto;
+    width: 450px;
+    background-size: contain;
+    padding-top: 50px;
+  }
+
+  .content img{
+    display: block;
+    margin: auto;
+    width: 450px;
+    background-size: contain;
+  }
+
+  .content h1{
+    text-align: center;
+    font-size: 50px;
+    margin-top: 30px;
+  }
+
+  .forget_psw{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+  }
+
+  .uploader{
+    float: none;
+    margin: auto;
+    width: 340px;
+    margin-top: 50px;
+  }
+
+  .uploader p{
+    float: left;
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  #previewImg{
+    max-width: 180px;
+    max-height: 180px;
+    margin-top: 10px;
+  }
+
+  .id{
+    float: none;
+    margin: auto;
+    width: 340px;
+    height: 40px;
+    margin-top: 50px;
+  }
+
+  .id p{
+    float: left;
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  input{
+    float: left;
+    width: 250px;
+    height: 40px;
+    background: none;  
+    border: 1px solid dimgray;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    outline: none;
+    font-size: 22px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+    margin-left: 20px;
+  }
+
+  .psw{
+    float: none;
+    margin: auto;
+    width: 340px;
+    height: 40px;
+    margin-top: 50px;
+  }
+
+  .psw p{
+    float: left;
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .eye_open{
+    background-image: url(../img/eye.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    margin-left: 290px;
+    position: absolute;
+  }
+
+  .eye_close{
+    background-image: url(../img/eyelash.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    margin-left: 290px;
+    position: absolute;
+  }
+
+  .pswConfirm{
+    float: none;
+    margin: auto;
+    width: 340px;
+    height: 70px;
+    margin-top: 50px;
+  }
+
+  .pswConfirm p{
+    float: left;
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+  } 
+
+  .pswConfirm input{
+    float: left;
+    width: 250px;
+    height: 40px;
+    background: none;  
+    border: 1px solid dimgray;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    outline: none;
+    font-size: 22px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+    margin-left: 80px;
+  } 
+
+  .eye_open_confirm{
+    background-image: url(../img/eye.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    margin-left: 290px;
+    margin-top: 40px;
+    position: absolute;
+  }
+
+  .eye_close_confirm{
+    background-image: url(../img/eyelash.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    margin-left: 290px;
+    margin-top: 40px;
+    position: absolute;
+  }
+
+  ::placeholder{
+    color: rgb(165, 165, 165, 0.6);
+    font-size: 18px;
+  }
+
+  .email{
+    float: none;
+    margin: auto;
+    width: 340px;
+    height: 40px;
+    margin-top: 50px;
+  }
+
+  .email p{
+    float: left;
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .name{
+    float: none;
+    margin: auto;
+    width: 340px;
+    height: 40px;
+    margin-top: 30px;
+  }
+
+  .name p{
+    float: left;
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .tip{
+    float: none;
+    margin: auto;
+    width: 500px;
+    margin-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  button{
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    margin: auto;
+    display:block;
+    font-size: 22px;
+    width: 115px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .tip p{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 22px;
+  }
+
+  .tip p a{
+    text-decoration: none;
+    color: 	rgb(62, 133, 156);
+    font-size: 22px;
+  }
+
+  @media (max-width:1100px){
+    .header{
+      width: 100%;
+    }
+    
+    .content img{
+      max-width: 100%;
+    }
+    
+    .content{
+      width: 100%;
+    }
+
+    .tip{
+      width: 96%;
+      margin-left: 2%;
+      margin-right: 2%;
+    }
+  }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/main.css">
+  <title>JapunGo login</title>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="jquery-3.3.1.min.js"></script>
+  <!--選擇使用realtime database功能-->
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+  <script type="text/javascript">
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyCcIFB1orespqziBWnX8kUWyihopdBw8jM",
+        authDomain: "japungo.firebaseapp.com",
+        databaseURL: "https://japungo.firebaseio.com",
+        projectId: "japungo",
+        storageBucket: "japungo.appspot.com",
+        messagingSenderId: "238647383425",
+        appId: "1:238647383425:web:cd43c3708893b6e052c480"
+      };
+      // Initialize Firebase 初始化
+      firebase.initializeApp(firebaseConfig);
+      </script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <img src="img/logo_header.png" class="logo">
+    </div>
+    <div class="clear"></div>
+    
+    <div class="content login-content">
+      <img src="img/logo.png" alt="">  
+      <h1>登入</h1>
+      <div class="id">
+          <p>帳號</p>
+          <input type="text" class="txt" id="ID">
+      </div>
+      <div class="psw">
+          <p>密碼</p>
+          <input type="password" class="password" id="PassWd">
+          <button class="show_password glyphicon eye_open"></button>
+      </div>
+      <div class="tip">
+        <button id="btn">登入</button>
+        <p>還沒有帳號嗎？快來<a href="sign_in.html">註冊</a>｜不小心<a href="forget_psw.html">忘記密碼</a>了</p>
+      </div>
+      
+    </div>
+    
+  </div>
+  <script type="text/javascript">
+  function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+    if (arr = document.cookie.match(reg))
+
+        return unescape(arr[2]);
+    else
+        return null;
+}
+
+  $(document).ready(function(){
+    $('.show_password').click(function () {
+        let pass_type = $('input.password').attr('type');
+
+        if (pass_type === 'password'){
+            $('input.password').attr('type', 'text');
+            $('.show_password').removeClass('eye_open').addClass('eye_close');
+        } else {
+            $('input.password').attr('type', 'password');
+            $('.show_password').removeClass('eye_close').addClass('eye_open');
+        }
+    });
+  
+  data=firebase.database();
+  data.ref('/會員資料/').once('value',function(snapshot){
+    var data=snapshot.val();
+
+    $("#btn").on('click',function(){
+      var ID= $('#ID').val();
+      var PassWd=$('#PassWd').val();
+      
+      var obj = Object.keys(data).map(function(_) { return data[_]; });
+      
+      var flag=0;
+      // console.log(ID);
+      // console.log(PassWd);
+      for(var i=0;i<obj.length;i++){
+        if(PassWd==obj[i].PassWd&&ID==obj[i].ID){
+            flag++;
+            document.cookie="ID="+ID;
+            window.location.href="game.html";
+        }
+      }
+
+      if(flag==0){
+        alert("wrong number");
+      }
+   });
+  });
+    
+
+});
+  </script>
+  
+</body>
+</html>

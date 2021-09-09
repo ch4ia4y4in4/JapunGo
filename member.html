@@ -1,0 +1,477 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/member.css">
+    <title>會員專區</title>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <!--選擇使用realtime database功能-->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+    <script src="http://code.changer.hk/jquery/plugins/jquery.cookie.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-storage.js"></script>
+    <script type="text/javascript">
+    var firebaseConfig = {
+        apiKey: "AIzaSyCcIFB1orespqziBWnX8kUWyihopdBw8jM",
+        authDomain: "japungo.firebaseapp.com",
+        databaseURL: "https://japungo.firebaseio.com",
+        projectId: "japungo",
+        storageBucket: "japungo.appspot.com",
+        messagingSenderId: "238647383425",
+        appId: "1:238647383425:web:cd43c3708893b6e052c480"
+      };
+      // Initialize Firebase 初始化
+      firebase.initializeApp(firebaseConfig);
+      </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <img src="img/logo_header.png" class="logo">
+            <div id="toggle">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+            </div>
+
+            <nav id="menu">
+                 <ul>
+                    <li><a href="game.html"><img src="img/game.png" alt="">今天吃什麼</a></li>
+                    <li><a href="posts.html"><img src="img/posts.png" alt="">我的動態</a></li>
+                    <li><a href="search.html"><img src="img/search.png" alt="">搜尋美食</a></li>
+                    <li><a href="foodlist.html"><img src="img/foodlist.png" alt="">美食清單</a></li>
+                    <li><a href="friendlist.html"><img src="img/friendlist.png" alt="">好友清單</a></li>
+                    <li><a href="member.html#1" id="reviseInfo"><img src="img/member.png" alt="">修改會員資料</a></li>
+                    <li><a href="member.html#2" id="friendRequest"><img src="img/friend_request.png" alt="">好友邀請</a></li>
+                    <li><a href="member.html#3" id="comment"><img src="img/comment.png" alt="">我的評論</a></li>
+                    <li><a onclick="delCookie('ID')"><img src="img/logout.png" alt="">登出</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="clear"></div>
+
+        <div class="title">
+            <h1>會員專區</h1>
+            <div class="menu2">
+                <ul>
+                    <li><a href="member.html#1" id="reviseInfoBtn">修改會員資料</a></li>
+                    <li><a href="member.html#2" id="friendRequestBtn">我的好友邀請</a></li>
+                    <li><a href="member.html#3" id="commentBtn">我的評論</a></li>
+                    <li><a href="" onclick="delCookie('ID')">登出</a></li>
+                </ul>
+            </div>    
+        </div>
+        <div class="clear"></div>
+
+        <div class="content">
+            <div class="reviseInfo" id="1">
+                <h2>修改會員資料</h2>
+                <h3>請在下方輸入您要修改的資料</h3>
+                <div class="line"></div>
+              
+                <div class="uploader">
+                    <p>頭貼</p>
+                    <input id="upload" style="display: none;" type="file" data-target="file-uploader" accept="image/*">
+                    <label for="upload">
+                      <img src="img/camera.png" style="width: 70px; height: 70px; margin-left: 100px;">
+                    </label>
+                    <img id="previewImg" src="#" alt="">
+                </div>
+
+                <div class="name">
+                    <p>暱稱</p>
+                    <input type="text" class="txt" id="Name">
+                </div>
+
+                <div class="psw">
+                    <p>密碼</p>
+                    <input type="password" class="password" id="PassWd">
+                    <button class="show_password glyphicon eye_open"></button>
+                </div>
+            
+                <div class="pswConfirm">
+                    <p>確認密碼</p>
+                    <input type="password" class="password_confirm" placeholder="請再次輸入密碼以確認" id="RepassWd">
+                    <button class="show_password_confirm glyphicon eye_open_confirm"></button>
+                </div>
+
+                <button id="confirm">確認</button>            
+            </div>   
+            
+            <div class="friendReqList" id="2">
+                <h2>我的好友邀請</h2>
+                <div class="line"></div>
+                    <div class="FriendRequest">
+                    <!-- 若無邀請，顯示：
+                    <h2>目前尚無未確認之邀請</h2> -->
+
+                    <div class="info" style="display:none">
+                        <img id="friendphoto" class="addIcon">
+                        <h3 id="friendName">用戶名</h3>
+                        <button>拒絕</button> 
+                        <button>接受</button>                                                
+                    </div>
+                    </div>               
+            </div>
+
+            <div class="comment" id="3">
+                <h2>我的評論</h2>
+                <div class="line"></div>
+                <div class="list">
+                    <!-- 若無評論，顯示：
+                    <h2>您目前尚未發表過評論</h2> -->
+
+                    <div class="commentContent" style="display:none">
+                        <img src="" alt="">
+                        <h3>餐廳名</h3>
+                        <p>內容</p>
+                        <button>刪除</button>
+                        <button>修改</button>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        
+        <div class="footer">
+            <div class="left">
+                <img src="img/logo_mini.png" alt="" class="logo_footer">
+                <h3>聯絡我們</h3>
+                <p>如有任何問題，請留下您的問題與聯絡信箱，我們將儘速與您聯繫</p>
+            </div>
+            
+            <div class="right">
+                <textarea id="suggestion" style="overflow:auto" class="questionTerm" placeholder="請輸入您的問題"></textarea>
+                <div class="emailArea">
+                    <input id="membermail" type="email" class="emailTerm" placeholder="請輸入您的信箱">
+                    <button onclick=suggestion() type="submit" class="submitBtn"><img src="img/send.png" alt="" class="contact"></button>
+                </div> 
+            </div> 
+            
+            <button id="backTop" class="toTop"></button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $( document ).ready(function() {
+            $('.show_password').click(function () {
+                let pass_type = $('input.password').attr('type');
+                if (pass_type === 'password') {
+                    $('input.password').attr('type', 'text');
+                    $('.show_password').removeClass('eye_open').addClass('eye_close');
+                } else {
+                    $('input.password').attr('type', 'password');
+                    $('.show_password').removeClass('eye_close').addClass('eye_open');
+                }
+            });
+
+            $('.show_password_confirm').click(function () {
+                let pass_type = $('input.password_confirm').attr('type');
+                if (pass_type === 'password') {
+                    $('input.password_confirm').attr('type', 'text');
+                    $('.show_password_confirm').removeClass('eye_open_confirm').addClass('eye_close_confirm');
+                } else {
+                    $('input.password_confirm').attr('type', 'password');
+                    $('.show_password_confirm').removeClass('eye_close_confirm').addClass('eye_open_confirm');
+                }
+            });
+
+            if(location.hash == "#1"){
+                $('.friendReqList').hide();
+                $('.comment').hide();
+                $('.reviseInfo').show();
+            }else if(location.hash == "#2"){
+                $('.reviseInfo').hide();
+                $('.comment').hide();
+                $('.friendReqList').show();
+            }else if(location.hash == "#3"){
+                $('.reviseInfo').hide();
+                $('.friendReqList').hide();
+                $('.comment').show();
+            }
+
+            $('#menu').hide();
+            $('#toggle').click(function() {
+                $('#menu').slideToggle();
+            });
+
+            $('#friendRequest, #friendRequestBtn').click(function() {
+                $('.reviseInfo').hide();
+                $('.comment').hide();
+                $('.friendReqList').show();
+            });
+
+            $('#reviseInfo, #reviseInfoBtn').click(function() {
+                $('.friendReqList').hide();
+                $('.comment').hide();
+                $('.reviseInfo').show();
+            });
+
+            $('#comment, #commentBtn').click(function(){
+                $('.reviseInfo').hide();
+                $('.friendReqList').hide();
+                $('.comment').show();
+            });
+            
+        });
+
+        $(function(){
+            $('#backTop').click(function(){ 
+                $('html,body').animate({scrollTop:0}, 333);
+            });
+            $(window).scroll(function() {
+                if ( $(this).scrollTop() > 300 ){
+                    $('#backTop').fadeIn(222);
+                } else {
+                    $('#backTop').stop().fadeOut(222);
+                }
+            }).scroll();
+        });
+    </script>
+
+    <script type="text/javascript">
+    //----------------------------------------------修改會員資料
+      var storage = firebase.storage();
+      var storageRef = firebase.storage().ref();
+      //fileReader
+      var fileReader = new FileReader();
+      var upload = document.getElementById('upload');
+      var previewImg = document.getElementById('previewImg');
+      upload.addEventListener('change', function (e) {
+        fileReader.readAsDataURL(this.files[0]);
+        fileReader.addEventListener("load", function (event) {
+          //讀取後設定<img>的src
+          previewImg.src = this.result;
+        }, false);
+      })
+    //
+    var data=firebase.database().ref('/會員資料/');
+    $(document).ready(function(){
+    var ID=getCookie('ID');
+    $('#confirm').on('click',function(){
+        data.once('value',function(snapshot){
+             
+            var Name=$('#Name').val();
+            var PassWd=$('#PassWd').val();
+            var RepassWd=$('#RepassWd').val();
+            var memberInf=snapshot.val();
+            var memberobj = Object.keys(memberInf).map(function(_) { return memberInf[_]; });
+            console.log(upload.value);
+              if (upload.value != '') {
+                let myfile = upload.files[0];
+                console.log(myfile);
+                //設定頭貼上傳細節，檔名設為使用者ID
+                var storageRef = firebase.storage().ref('user/' + ID);
+                storageRef.put(myfile);
+              }
+            if(PassWd!=RepassWd){
+                alert('確認密碼不符');
+            }else if(Name==""&&PassWd==""&&upload==""){
+                alert("請輸入要修改的資料");
+            }else if(Name!=""&&PassWd!=""){
+            
+                for(var i in memberInf){
+                    if(memberInf[i]["ID"]==ID){
+                        
+                        var pushdata=firebase.database().ref('/會員資料/'+i);
+                        
+                        pushdata.update({
+                            Name:Name,
+                            PassWd:PassWd,
+                        })
+                    alert("修改成功！");
+                    break;
+                    }
+                }       
+            }else if(Name==""&&PassWd!=""){
+                for(var a in memberInf){
+                    if(memberInf[a]["ID"]==ID){
+                        var pushdata=firebase.database().ref('/會員資料/'+a);
+                        pushdata.update({
+                            PassWd:PassWd,
+                        })
+                        alert("修改成功");
+                        break;
+                    }
+                }
+            }else if(Name!=""&&PassWd==""){
+                for(var b in memberInf){
+                    if(memberInf[b]["ID"]==ID){
+                        var pushdata=firebase.database().ref('/會員資料/'+b);
+                        pushdata.update({
+                            Name:Name,
+                        })
+                        alert("修改成功");
+                        break;
+                    }
+                }
+            }else if(Name==""&&PassWd==""&&upload!=""){
+                alert("修改成功");
+            }
+    });
+});
+//---------------------------------------------------------------------我的好友邀請
+    var frienddata=firebase.database().ref('/好友名單資料/');
+    var memberdata=firebase.database().ref('/會員資料/');
+    var str='';
+    var allimg=[];
+    var FriendReqList=document.querySelector('.FriendRequest');
+    frienddata.once('value',function(friendsnapshot){
+        memberdata.once('value',function(membersnapshot){
+        var memberInf=membersnapshot.val();
+        var friendInf=friendsnapshot.val();
+        var count=0;
+        for(var j in friendInf){
+            if(friendInf[j]["ANo"]==ID&&friendInf[j]["Status"]=='false'){
+                console.log("1");
+                for(var k in memberInf){
+                    if(memberInf[k]["ID"]==friendInf[j]["SNo"]){
+                        allimg.push(memberInf[k]["ID"]);
+                        count++;
+                        str+='<div class="info" id="'+j+'">';
+                        str+='<img src="img/pic.png" id="friendphoto'+memberInf[k]["ID"]+'" class="addIcon">';
+                        str+='<h3 id="friendName">'+memberInf[k]["Name"]+'</h3>';
+                        str+='<button onclick=Reject("'+j+'")>'+"拒絕"+'</button>';
+                        str+='<button onclick=Accept("'+j+'")>'+"接受"+'</button></div>';
+                    }
+                }
+            }
+            
+        }
+        
+        if(count==0){
+            
+            str+='<h3 class="requestTip">'+"目前尚無未確認之邀請"+'</h2>';
+            
+        }
+         
+         FriendReqList.innerHTML=str;
+         setTimeout(() => {
+                    for(i in allimg){
+                        getimg(allimg[i]);
+                    }
+                }, 0);
+        });
+    });
+
+//---------頭貼----------
+function getimg(id){
+    var img_id='friendphoto'+id;
+    var storageRef=firebase.storage().ref();
+    var img_ref='user/'+id;
+    var pathReference = storageRef.child(img_ref);
+    pathReference.getDownloadURL().then(function(url) {    
+        document.getElementById(img_id).src=url;          
+    });
+}
+
+//--------------------------------------------------------------店家評論
+    var storedata=firebase.database().ref('/店家資料/');
+    var commentdata=firebase.database().ref('/評論區資料/');
+    var memberdata=firebase.database().ref('/會員資料/');
+    var commentstr='';
+    var commentcount=0;
+    var commentContent=document.querySelector('.list' );
+    memberdata.once('value',function(membersnapshot){
+        commentdata.once('value',function(commentsnapshot){
+            storedata.once('value',function(storesnapshot){
+                var storeInf=storesnapshot.val();
+                var memberInf=membersnapshot.val();
+                var commentInf=commentsnapshot.val();
+                var ID=getCookie('ID');
+                
+                for(var comment in commentInf){
+                    if(commentInf[comment]["UNo"]==ID){
+                        commentcount++;
+                        commentstr+='<div class="commentContent"><h3>'+commentInf[comment]["Name"]+'</h3>';
+                        commentstr+='<p>'+commentInf[comment]["Discon"]+'</p>';
+                        commentstr+='<button onclick=delcomment("'+comment+'")>'+"刪除"+'</button>';
+                        commentstr+='<button onclick=changecomment("'+comment+'")>'+"修改"+'</button></div>';
+                               
+
+                    }
+                }
+                if(commentcount==0){
+                    commentstr+='<h3 class="commentTip">'+"您目前尚未發表過評論"+'</h2>';
+                }
+                commentContent.innerHTML=commentstr;
+            });
+        });
+    });
+});
+function changecomment(comment){
+    var commentdata=firebase.database().ref('/評論區資料/');
+    commentdata.once('value',function(commentsnapshot){
+        var commentInf=commentsnapshot.val();
+        var nowcomment=commentInf[comment]["Discon"];
+        var newcomment=window.prompt('原評論內容：\r\n'+nowcomment+'\r\n請輸入新的評論：');
+        var flag=1;
+        if(newcomment){
+            var commentdata=firebase.database().ref('/評論區資料/'+comment);
+            commentdata.update({
+                Discon:newcomment,
+            })
+            alert("修改成功");
+        }else{
+            console.log("2");
+            alert("尚未修改原本資料");
+        }
+
+  });
+      
+}
+function delcomment(comment){
+    var delcommentdata=firebase.database().ref('/評論區資料/'+comment);
+    var n=document.querySelector('.commentContent');
+    n.style="display:none";
+    alert("評論已刪除");
+    delcommentdata.remove();
+}
+function Reject(j){
+    var id='#'+j;
+    var n=document.querySelector(id);
+    n.style="display:none";
+    alert("好友邀請已拒絕");
+    var Rejectdata=firebase.database().ref('/好友名單資料/'+j);
+    Rejectdata.remove();
+}
+function Accept(j){
+    var id='#'+j;
+    var n=document.querySelector(id);
+    n.style="display:none";
+    alert("好友邀請已接受");
+    var Acceptdata=firebase.database().ref('/好友名單資料/'+j);
+    Acceptdata.update({
+        Status:"true",
+    });
+}
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
+function delCookie(name){
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    document.cookie = escape(name) + "=" + cval + "; expires=" + exp.toGMTString();
+    window.location.href="login.html";
+}
+function suggestion(){
+    var suggestion=$('#suggestion').val();
+    var membermail=$('#membermail').val();
+    var problem=firebase.database().ref('/問題回報/');
+    problem.push({
+        question:suggestion,
+        email:membermail
+    })
+    alert("感謝您的意見");
+}  
+    </script>
+</body>
+</html>

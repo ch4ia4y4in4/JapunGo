@@ -1,0 +1,350 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.wrap{
+    float: none;
+    margin: 0;
+    color: dimgray;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    background-color: WhiteSmoke;
+  }
+  
+  .header{
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    position: fixed;
+    background-color: #EDF7FF;
+    z-index: 1;
+  }
+  
+  .logo{
+    height: 46px; 
+    margin-left: 1.5%; 
+    margin-top: 2px;
+  }
+  
+  #toggle {
+    float: right;
+    margin-right: 15px;
+    width: 28px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+  }
+  
+  #toggle div {
+    width: 100%;
+    height: 2px;
+    background: dimgray;
+    margin-top: 8px;
+  }
+
+  #menu{
+    top: 50px;
+    left: 70%;
+    width: 30%;
+    height: 90%;
+    background-color: #EDF7FF;
+    border-radius: 0px 0px 0px 8px;
+    position: fixed;
+    overflow: auto;
+  }
+
+  #menu li{
+    height: 50px;
+  }
+
+  #menu li img{
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin: 10px;
+  }
+
+  #menu li a{
+    float: left;
+    text-decoration: none;
+    color: dimgray;
+    font-size: 20px;
+    line-height: 50px;
+    display: block;
+    width: 100%;
+  }
+
+  #menu li a:hover{
+    background-color: rgb(215, 237, 253);
+  }
+
+  ::-webkit-scrollbar{
+    width: 7px;
+    height: 16px;
+    background-color: aliceblue;
+  }
+
+  ::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background-color: aliceblue;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    border-radius:10px;
+    background-color: dimgray;
+  }
+
+  .clear{
+    clear: both;
+  }
+
+  .content{
+    top: 50px;
+    float: none;
+    margin: auto;
+    width: 98%;
+  }
+
+  .start{
+    display: block;
+    margin: auto;
+    padding-top: 270px;
+    height: 440px;
+    background-image: url("../img/bg6.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .start h1{
+    z-index: 0;
+    text-align: center;
+    font-size: 50px; 
+  }
+
+  .start p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  button{
+    display: block;
+    margin: auto;
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 28px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    min-width: 215px;
+    margin-top: 40px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  #q2_prev{
+    font-size: 24px;
+    margin-bottom: 100px;
+  }
+
+  #q3_prev{
+    font-size: 24px;
+    margin-bottom: 100px;
+  }
+
+  #q4_prev{
+    font-size: 24px;
+    margin-bottom: 100px;
+  }
+
+  .q1 {
+    height: 565px;
+    padding-top: 50px;
+    background-image: url(../img/bg3.png);
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+
+  .question{
+    margin: auto;
+    display: block;
+    width: 300px;
+    margin-top: 60px;
+  }
+
+  .q1 h2{
+    text-align: center;
+    font-size: 28px; 
+    margin-top: -60px; 
+  }
+
+  .q2{
+    height: 565px; 
+    padding-top: 30px;
+    background-image: url(../img/bg4.png);
+    background-position: left;
+    background-repeat: no-repeat;
+  }
+
+  .q2 h2{
+    text-align: center;
+    font-size: 28px;
+    margin-top: -60px;
+  }
+
+  .q3{
+    height: 565px;
+    padding-top: 30px;
+    background-image: url(../img/bg3.png);
+    background-position: left;
+    background-repeat: no-repeat;
+  }
+
+  .q3 h2{
+    text-align: center;
+    font-size: 28px;
+    margin-top: -60px;
+  }
+
+  .q4{
+    height: 565px;
+    padding-top: 30px;
+    background-image: url(../img/bg4.png);
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+
+  .q4 h2{
+    text-align: center;
+    font-size: 28px;
+    margin-top: -60px;
+  }
+
+  .q5{
+    height: 565px;
+    padding-top: 30px;
+    background-image: url(../img/bg5.png);
+    background-position: left;
+    background-repeat: no-repeat;
+  }
+
+  .q5 h2{
+    text-align: center;
+    font-size: 28px;
+    margin-top: -60px;
+  }
+
+  .circle{
+    width: 140px;
+    position: relative;
+    top: 60px;
+    left: 200px;
+  }
+
+  .game h3{
+    z-index: 0;
+    margin-left: 10px;
+    font-size: 36px; 
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 999em;
+    background-color: wheat;
+    text-align: center;
+    color: whitesmoke;
+  }
+
+  .circleOne{
+    z-index: 0;
+    margin-left: 110px;
+    width: 25px;
+    height: 25px;
+    border-radius: 999em;
+    background-color: rgb(241, 162, 189);
+  }
+
+  .circleThree{
+    z-index: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 999em;
+    background-color: lightgoldenrodyellow;
+  }
+
+  @media (max-width:1100px){
+    .content{
+      width: 100%;
+    }
+
+    .game{
+      width: 100%;
+    }
+
+    .circle{
+      left: 8%;
+    }
+
+    .question{
+      margin-top: 10%;
+    }
+
+    #menu{
+      left: 62%;
+      min-width: 38%;
+    }
+  }
+
+  @media (max-width:480px){
+    .circle{
+      top: 4%;
+      left: 8%;
+    }
+
+    .question{
+      margin-top: 80px;
+    }
+
+    #menu{
+      left: 40%;
+      min-width: 60%;
+    }
+  }

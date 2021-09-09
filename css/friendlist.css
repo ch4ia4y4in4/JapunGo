@@ -1,0 +1,584 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.wrap{
+    float: none;
+    margin: 0;
+    color: dimgray;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    background-color: WhiteSmoke;
+  }
+  
+  .header{
+    z-index: 2;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    position: fixed;
+    background-color: #EDF7FF;
+  }
+  
+  .logo{
+    height: 46px; 
+    margin-left: 1.5%; 
+    margin-top: 2px;
+  }
+
+  #toggle {
+    float: right;
+    margin-right: 15px;
+    width: 28px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+  }
+  
+  #toggle div {
+    width: 100%;
+    height: 2px;
+    background: dimgray;
+    margin-top: 8px;
+  }
+
+  #menu{
+    z-index: 2;
+    top: 50px;
+    left: 70%;
+    width: 30%;
+    height: 90%;
+    background-color: #EDF7FF;
+    border-radius: 0px 0px 0px 8px;
+    position: fixed;
+    overflow: auto;
+  }
+
+  #menu li{
+    height: 50px;
+  }
+
+  #menu li img{
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin: 10px;
+  }
+
+  #menu li a{
+    float: left;
+    text-decoration: none;
+    color: dimgray;
+    font-size: 20px;
+    line-height: 50px;
+    display: block;
+    width: 100%;
+  }
+
+  #menu li a:hover{
+    background-color: rgb(215, 237, 253);
+  }
+
+  ::-webkit-scrollbar{
+    width: 7px;
+    height: 16px;
+    background-color: aliceblue;
+  }
+
+  ::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background-color: aliceblue;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    border-radius:10px;
+    background-color: dimgray;
+  }
+  
+  .clear{
+    clear: both;
+  }
+
+  .title{
+    float: none;
+    margin: auto;
+    width: 98%;
+    height: 350px;
+    background-image: url("../img/bg9.png");
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+
+  .title h1{
+    text-align: center;
+    font-size: 50px;
+    padding-top: 110px;
+  }
+
+  .title p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .inputArea{
+    width: 340px;
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+  }
+
+  .searchTerm{
+    outline: none;
+    width: 100%;
+    height: 40px;
+    background: none;  
+    border: 1px solid dimgray;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    outline: none;
+    font-size: 24px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+  }
+  
+  .searchBtn {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 0px;
+    outline: none;
+  }
+
+  .searchBtn img{
+    width: 40px;
+    height: 40px;
+  } 
+
+  #friendInfo{
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    margin-left:-200px;
+    width: 400px;
+    min-height: 300px;
+    box-shadow: 3px 3px 3px gray;
+    border: 0.5px gray solid;
+    border-radius: 10px;
+    background-color: #fff;
+    position: absolute;    
+  }
+
+  #friendInfo img{
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-top: 20px;
+    margin-left: 150px;
+  }
+
+  #friendInfo h3{
+    text-align: center;
+    color: dimgrey;
+    font-size: 30px;
+    margin-top: 30px;
+  }
+
+  #addFriend{
+    display: block;
+    margin: auto;
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 22px;
+    width: 130px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  #close{
+    float: right;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    margin-right: 18px;
+  }
+
+  #close img{
+    width: 20px;
+    height: 20px;
+  }
+
+  .content{
+    width: 98%;
+    margin: auto;
+    background-color:	#fff;
+  }
+
+  .friendlistTip{
+    font-size: 30px;
+    color: dimgray;
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  .friendlist{
+    float: left;
+    width: 100%;
+    background-color: #FFF;
+    padding-bottom: 50px;
+  }
+  
+  .info{
+    float: left;
+    width: 280px;
+    background-color: #fff;
+    margin: 30px 45px 50px 45px;
+    box-shadow: 0 1px 3px 0 rgba(28, 128, 185, 0.404);
+    border-radius: 2px;
+    font-size: 16px;
+    font-family: "Microsoft JhengHei UI" ,sans-serif;
+  }
+
+  .info img{
+    width: 90px;
+    height: 90px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+  }
+
+  .info h3{
+    font-size: 24px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: dimgrey;
+  }
+
+  .info a{
+    text-decoration: none;
+    color: dimgrey;
+  }
+
+  .info button{
+    display: block;
+    margin: auto;
+    outline: none;
+    border: 0;
+    background-color: rgb(234, 245, 255);
+    color: dimgray;
+    font-size: 18px;
+    width: 130px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+  }
+
+  .footer{
+    width: 98%;
+    margin: auto;
+    background-color: #EDF7FF;
+    padding-bottom: 30px;
+  }
+
+  .left{
+    width: 330px;
+    margin-left: 50px;
+    padding-top: 30px;
+  }
+
+  .logo_footer{
+    width: 200px;
+  }
+
+  .left h3{
+    font-size: 30px;
+    margin-top: 20px;
+  }
+
+  .left p{
+    width: 330px;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  .right{
+    width: 330px;
+    margin-left: 500px;
+    margin-top: -120px;
+  }
+
+  ::placeholder {
+    color: rgb(165, 165, 165);
+  }
+
+  .questionTerm{
+    outline: none;
+    margin-left: 50px;
+    margin-top: 30px;
+    width: 330px;
+    height: 80px;
+    background: transparent;  
+    border: 0.1px solid dimgray;
+    font-size: 16px;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+  }
+  
+  .emailArea{
+    width: 330px;
+    margin-left: 50px;
+    margin-top: 20px;
+    display: flex;
+  }
+
+  .emailTerm{
+    outline: none;
+    width: 100%;
+    height: 40px;
+    background: none;  
+    border: 0.1px solid dimgray;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    font-size: 16px;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    color: dimgray;
+  }
+  
+  .submitBtn {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 0px;
+    outline: none;
+  }
+
+  .contact{
+    width: 30px;
+    height: 30px;
+  }
+
+  .listBtn {
+    z-index: 5;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: 33%;
+    border: 0px;
+    opacity: 0.6;
+    background: dimgray;
+    outline: none;
+  }
+
+  .listBtn img{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: cover;
+    background-position: bottom;
+    padding-top: 0.3rem;
+  }
+
+  .mapBtn {
+    z-index: 5;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: 33%;
+    border: 0px;
+    opacity: 0.6;
+    background: dimgray;
+    outline: none;
+  }
+
+  .mapBtn img{
+    width: 1.8rem;
+    height: 1.8rem;
+    background-size: cover;
+    background-position: inherit;
+  }
+
+  .toTop {
+    z-index: 5;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 33%;
+    opacity: 0.6;
+    background: dimgray;
+    cursor: pointer;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    display: none;
+  }
+
+  .toTop::before, .toTop::after {
+    width: 18px;
+    height: 5px;
+    border-radius: 3px;
+    background: aliceblue;
+    position: absolute;
+    content: "";
+  }
+
+  .toTop::before {
+    transform: rotate(-45deg) translate(0, -50%);
+    left: 0.5rem;
+  }
+
+  .toTop::after {
+    transform: rotate(45deg) translate(0, -50%);
+    right: 0.5rem;
+  }
+
+  .toTop:focus {
+    outline: none;
+  }
+
+  .mapContent{
+    width: 98%;
+    height: 1000px;
+    margin: auto;
+    background-color:	#fff;
+  }
+
+  @media (max-width:1100px){
+    #menu{
+      left: 62%;
+      min-width: 38%;
+    }
+
+    .title{
+      width: 100%;
+    }
+
+    .content{
+      width: 100%;
+    }
+
+    .friendlist{
+      width: 100%;
+    }
+
+    .info{
+      margin: auto;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      margin-left: 5%;
+    }
+
+    .footer{
+      width: 100%;
+    }
+
+    .left{
+      margin: auto;
+      margin-left: 50px;
+    }
+
+    .right{
+      margin: auto;
+      margin-left: -3px;
+    }
+
+  }
+
+  @media (max-width:480px){
+    #menu{
+      left: 40%;
+      min-width: 60%;
+    }
+
+    #friendInfo{
+      width: 90%;
+      margin-left: 5%;
+      left: unset;
+    }
+
+    .info{
+      width: 90%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      margin-left: 5%;
+    }
+
+    .left{
+      width: 85%;
+    }
+  
+    .left p{
+      width: 85%;
+    }
+  
+    .right{
+      width: 85%;
+    }
+  
+    .questionTerm{
+      width: 85%;
+    }
+    
+    .emailArea{
+      width: 85%;
+    }
+
+  }

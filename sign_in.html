@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/main.css">
+  <title>JapunGo sign in</title>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!--firebase核心js-->
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="jquery-3.3.1.min.js"></script>
+  <!--選擇使用realtime database功能-->
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-storage.js"></script>
+  <script src="http://code.changer.hk/jquery/plugins/jquery.cookie.js"></script>
+  <!--jquery-confirm
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>-->
+  <script type="text/javascript">
+
+    var firebaseConfig = {
+      apiKey: "AIzaSyCcIFB1orespqziBWnX8kUWyihopdBw8jM",
+      authDomain: "japungo.firebaseapp.com",
+      databaseURL: "https://japungo.firebaseio.com",
+      projectId: "japungo",
+      storageBucket: "japungo.appspot.com",
+      messagingSenderId: "238647383425",
+      appId: "1:238647383425:web:cd43c3708893b6e052c480"
+    };
+    // Initialize Firebase 初始化
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="header">
+      <img src="img/logo_header.png" class="logo">
+    </div>
+    <div class="clear"></div>
+
+    <div class="content">
+      <img src="img/logo.png" class="bigLogo">
+      <h1>註冊</h1>
+      <div class="uploader">
+        <p>頭貼</p>
+        <input id="upload" style="display: none;" type="file" data-target="file-uploader" accept="image/*">
+        <label for="upload">
+          <img src="img/camera.png" style="width: 70px; height: 70px; margin-left: 135px;">
+        </label>
+        <img id="previewImg" src="#" alt="">
+      </div>
+      <div class="name">
+        <p>暱稱</p>
+        <input type="text" class="txt" id="Name">
+      </div>
+      <div class="id">
+        <p>帳號</p>
+        <input type="text" class="txt" id="ID">
+      </div>
+      <div class="psw">
+        <p>密碼</p>
+        <input type="password" class="password" id="PassWd">
+        <button class="show_password glyphicon eye_open"></button>
+      </div>
+      <div class="pswConfirm">
+        <p>確認密碼</p>
+        <input type="password" class="password_confirm" placeholder="請再次輸入密碼以確認" id="RepassWd">
+        <button class="show_password_confirm glyphicon eye_open_confirm"></button>
+      </div>
+      <div class="email">
+        <p>信箱</p>
+        <input type="email" class="txt" id="Email">
+      </div>
+      <div class="tip">
+        <button id="btn" class="sign_in">註冊</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.show_password').click(function () {
+        let pass_type = $('input.password').attr('type');
+
+        if (pass_type === 'password') {
+          $('input.password').attr('type', 'text');
+          $('.show_password').removeClass('eye_open').addClass('eye_close');
+        } else {
+          $('input.password').attr('type', 'password');
+          $('.show_password').removeClass('eye_close').addClass('eye_open');
+        }
+      });
+
+      $('.show_password_confirm').click(function () {
+        let pass_type = $('input.password_confirm').attr('type');
+
+        if (pass_type === 'password') {
+          $('input.password_confirm').attr('type', 'text');
+          $('.show_password_confirm').removeClass('eye_open_confirm').addClass('eye_close_confirm');
+        } else {
+          $('input.password_confirm').attr('type', 'password');
+          $('.show_password_confirm').removeClass('eye_close_confirm').addClass('eye_open_confirm');
+        }
+      });
+
+      //---預覽圖片-------------------------------------------
+      var storage = firebase.storage();
+      var storageRef = firebase.storage().ref();
+      //fileReader
+      var fileReader = new FileReader();
+      var upload = document.getElementById('upload');
+      var previewImg = document.getElementById('previewImg');
+      upload.addEventListener('change', function (e) {
+        fileReader.readAsDataURL(this.files[0]);
+        fileReader.addEventListener("load", function (event) {
+          //讀取後設定<img>的src
+          previewImg.src = this.result;
+        }, false);
+      })
+
+      //----------------------------------------------
+      var data = firebase.database().ref('/會員資料/');
+      data.once('value').then(function (snapshot) {
+        var val = snapshot.val();
+        var obj = Object.keys(val).map(function (_) { return val[_]; });
+
+        $("#btn").on('click', function () {
+          var ID = $('#ID').val();
+          var PassWd = $('#PassWd').val();
+          var Name = $('#Name').val();
+          var Email = $('#Email').val();
+          var RepassWd = $('#RepassWd').val();
+          var count = 0;
+          function sendValue() {
+            window.open("game.html", "ID");
+          }
+
+          if (PassWd == '' || ID == '' || Name == '' || Email == '') {
+            alert("尚有欄位未填寫");
+          } else {
+            for (var i = 0; i < obj.length; i++) {
+              if (ID == obj[i].ID) {
+                alert("此帳號已被使用");
+                count++;
+              }
+            }
+            if (count == 0 && PassWd != RepassWd) {
+              alert('確認密碼輸入錯誤');
+              count++;
+            }
+            if (count == 0) {
+              data.push({
+                ID: ID,
+                PassWd: PassWd,
+                Name: Name,
+                Email: Email,
+              });
+              //上傳圖片-------------------------
+              console.log(upload.value);
+              if (upload.value != '') {
+                let myfile = upload.files[0];
+                console.log(myfile);
+                //設定頭貼上傳細節，檔名設為使用者ID
+                var storageRef = firebase.storage().ref('user/' + ID);
+                storageRef.put(myfile);
+              }
+              //---------------------------------
+              setTimeout(() => {
+                alert('註冊成功，請登入');
+              setTimeout("location.href='login.html'",1000);
+              }, 500);
+              
+
+
+            }
+          }
+        });
+      });
+
+    });
+
+  </script>
+</body>
+
+</html>

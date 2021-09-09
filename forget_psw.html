@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>忘記密碼</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        const firebaseConfig = {
+            apiKey: "AIzaSyCcIFB1orespqziBWnX8kUWyihopdBw8jM",
+            authDomain: "japungo.firebaseapp.com",
+            databaseURL: "https://japungo.firebaseio.com",
+            projectId: "japungo",
+            storageBucket: "japungo.appspot.com",
+            messagingSenderId: "238647383425",
+            appId: "1:238647383425:web:cd43c3708893b6e052c480"
+        };
+        // Initialize Firebase 初始化
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <img src="img/logo_header.png" class="logo">
+        </div>
+        <div class="clear"></div>
+        
+        <div class="content">
+            <img src="img/logo.png" alt="">  
+            <h1>忘記密碼</h1>
+            <p class="forget_psw">請輸入您的帳號和信箱，我們將寄送臨時密碼郵件給您</p>
+          
+            <div class="id">
+                <p>帳號</p>
+                <input type="text" id="id">
+            </div>
+
+            <div class="email">
+                <p>信箱</p>
+                <input type="text" id="email">
+            </div>
+
+            <div class="tip">
+                <button id="confirm">確認</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        $(document).ready(function(){
+            var db = firebase.database();
+            db.ref("/會員資料/").once('value',function(snapshot){
+                var data = snapshot.val();
+                $("#confirm").on('click',function(){
+                    var id= $("#id").val();
+                    var email=$("#email").val();         
+                   // var obj = Object.keys(data).map(function(_) { return data[_]; });
+                    var flag = 0;
+                    var pwd = "";
+                    for(i in data){
+                        if(id == data[i].ID && email == data[i].Email){
+                            flag = 1;
+                        }else if(id != data[i].ID && email == data[i].Email){
+                            flag = 2;    
+                        }else if(id == data[i].ID && email != data[i].Email){
+                            flag = 3;
+                        }
+                    }
+                    if (flag == 1){
+                        
+                         var len = 12;
+                             var chars = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678";
+                             var charsLen = chars.length;
+                            
+                             for (i = 0; i <= len; i++) {
+                         　　    pwd += chars.charAt(Math.floor(Math.random() * charsLen));
+                             }
+
+                             for(var j in data){
+                                 if(data[j]["ID"] == id){
+                                     var oldData = firebase.database().ref('/會員資料/'+j);
+                                     oldData.update({
+                                         PassWd:pwd
+                                     })
+                                 }
+                             }
+                         Email.send({
+                                 SecureToken : "6b160564-f392-4a71-9448-e167760c70ce",
+                                 To : email,
+                                 From : "japungoservice@gmail.com",
+                                 Subject : "JapunGo臨時密碼",
+                                 Body :  "親愛的會員您好，" + pwd + "是您的臨時密碼，請在登入後至「修改會員資料」重新設置密碼。"
+                             }).then(
+                                 alert("臨時密碼郵件已寄出，請至信箱查詢"),  
+                             );
+                             setTimeout(() => {
+                                window.location.href="login.html"
+                             }, 3000);
+                    }
+                    if(flag == 0){
+                        var yes = confirm("輸入的帳號和信箱有誤，請點擊「確定」再次輸入；若還不是會員請點擊「取消」前往註冊");
+                        if(yes) {
+                            window.location.reload();
+                        }else{
+                            window.location.href="sign_in.html";
+                        }
+                    }else if(flag == 2){
+                        alert("輸入的帳號有誤，請再次輸入");
+                        window.location.reload();
+                    }else if(flag == 3){
+                        alert("輸入的信箱有誤，請再次輸入");
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+        
+
+    </script>
+</body>
+</html>

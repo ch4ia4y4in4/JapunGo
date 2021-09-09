@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/game.css">
+    <title>今天吃什麼</title>
+    <script defer type="text/javascript" src='js/game.js'></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header">
+            <img src="img/logo_header.png" class="logo">
+            <div id="toggle">
+                <div class="one"></div>
+                <div class="two"></div>
+                <div class="three"></div>
+            </div>
+
+            <nav id="menu">
+                <ul>
+                    <li><a href="game.html"><img src="img/game.png" alt="">今天吃什麼</a></li>
+                    <li><a href="posts.html"><img src="img/posts.png" alt="">我的動態</a></li>
+                    <li><a href="search.html"><img src="img/search.png" alt="">搜尋美食</a></li>
+                    <li><a href="foodlist.html"><img src="img/foodlist.png" alt="">美食清單</a></li>
+                    <li><a href="friendlist.html"><img src="img/friendlist.png" alt="">好友清單</a></li>
+                    <li><a href="member.html#1"><img src="img/member.png" alt="">修改會員資料</a></li>
+                    <li><a href="member.html#2"><img src="img/friend_request.png" alt="">好友邀請</a></li>
+                    <li><a href="member.html#3"><img src="img/comment.png" alt="">我的評論</a></li>
+                    <li><a onclick="delCookie('ID')"><img src="img/logout.png" alt="">登出</a></li>
+               </ul>
+            </nav>
+        </div>
+        <div class="clear"></div>
+
+        <div class="content">
+            <div class="start">
+                <h1>今天吃什麼</h1>
+                <p>讓JapunGO幫助煩惱的你決定下一餐吃什麼</p>
+                <button id="startGame">開始遊戲</button>
+            </div>
+            <div class="clear"></div>
+
+            <div class="game">
+                <div class="q1">
+                    <div class="circle">
+                        <div class="circleOne"></div>
+                        <h3>Q.1</h3>
+                        <div class="circleThree"></div>
+                    </div>
+
+                    <div class="question">
+                        <h2 id='topic1'>題目</h2>
+                        <button id="q1_a1">1234</button>
+                        <button id="q1_a2"></button>
+                    </div>
+
+                    
+                </div>
+
+                <div class="q2">
+                    <div class="circle">
+                        <div class="circleOne"></div>
+                        <h3>Q.2</h3>
+                        <div class="circleThree"></div>
+                    </div>
+
+                    <div class="question">
+                        <h2 id='topic2'>題目</h2>
+                        <button id="q2_a1"></button>
+                        <button id="q2_a2"></button>
+                        <button id="q2_prev">上一題</button>
+                    </div>
+                    
+                </div>
+
+                <div class="q3">
+                    <div class="circle">
+                        <div class="circleOne"></div>
+                        <h3>Q.3</h3>
+                        <div class="circleThree"></div>
+                    </div>
+
+                    <div class="question">
+                        <h2 id='topic3'>題目</h2>
+                        <button id="q3_a1"></button>
+                        <button id="q3_a2"></button>
+                        <button id="q3_prev">上一題</button>
+                    </div>
+                    
+                </div>
+
+                <div class="q4">
+                    <div class="circle">
+                        <div class="circleOne"></div>
+                        <h3>Q.4</h3>
+                        <div class="circleThree"></div>
+                    </div>
+
+                    <div class="question">
+                        <h2 id='topic4'>題目</h2>
+                        <button id="q4_a1"></button>
+                        <button id="q4_a2"></button>
+                        <button id="q4_prev">上一題</button>
+                    </div>
+                    
+                </div>
+
+                <div class="q5">
+                    <div class="circle">
+                        <div class="circleOne"></div>
+                        <h3>Q.5</h3>
+                        <div class="circleThree"></div>
+                    </div>
+
+                    <div class="question">
+                        <h2 id='topic5'>題目</h2>
+                        <button id="q5_a1"></button>
+                        <button id="q5_a2"></button>
+                        <label for=""></label>
+                        <button id="enter" style="background:  rgb(253, 209, 193); font-size: 25px; line-height: 45px;">找食物GOGO<img src="img/go.png" style='height:40px; margin-left: 3px; float: right;'></button>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#menu').hide();
+            $('#toggle').click(function () {
+                $('#menu').slideToggle();
+            });
+
+            $('.game').hide();
+            $('#startGame').click(function () {
+                $('.start').hide();
+                $('.game').toggle();
+                $('.content')
+            });
+
+            $('#q1_a1').click(function () {
+                $('html, body').animate({ scrollTop: $('.q2').offset().top });
+            });
+
+            $('#q1_a2').click(function () {
+                $('html, body').animate({ scrollTop: $('.q2').offset().top });
+            });
+
+            $('#q2_prev').click(function () {
+                $('html, body').animate({ scrollTop: $('.q1').offset().top });
+            });
+
+            $('#q2_a1').click(function () {
+                $('html, body').animate({ scrollTop: $('.q3').offset().top });
+            });
+
+            $('#q2_a2').click(function () {
+                $('html, body').animate({ scrollTop: $('.q3').offset().top });
+            });
+
+            $('#q3_prev').click(function () {
+                $('html, body').animate({ scrollTop: $('.q2').offset().top });
+            });
+
+            $('#q3_a1').click(function () {
+                $('html, body').animate({ scrollTop: $('.q4').offset().top });
+            });
+
+            $('#q3_a2').click(function () {
+                $('html, body').animate({ scrollTop: $('.q4').offset().top });
+            });
+
+            $('#q4_prev').click(function () {
+                $('html, body').animate({ scrollTop: $('.q3').offset().top });
+            });
+            $('#q4_a1').click(function () {
+                $('html, body').animate({ scrollTop: $('.q5').offset().top });
+            });
+
+            $('#q4_a2').click(function () {
+                $('html, body').animate({ scrollTop: $('.q5').offset().top });
+            });
+
+        });
+
+        function delCookie(name){
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = getCookie(name);
+            document.cookie = escape(name) + "=" + cval + "; expires=" + exp.toGMTString();
+            window.location.href="login.html";
+        }
+    </script>
+</body>
+
+
+</html>
